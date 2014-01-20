@@ -46,6 +46,6 @@ module DeskApi
       end
     end
 
-    Faraday.register_middleware :request, retry: lambda { Retry }
+    Faraday.register_middleware :request, :retry => lambda { Retry }
   end
 end

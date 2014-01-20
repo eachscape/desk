@@ -3,7 +3,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'desk_api/version'
 
 Gem::Specification.new do |gem|
-  gem.name              = 'desk_api'
+  gem.name              = 'desk'
   gem.summary           = 'A lightweight, flexible wrapper for the desk.com REST API.'
   gem.description       = 'This is a lightweight, flexible ruby gem to interact with the desk.com REST API. It allows to create, read and delete resources available through the API endpoints. It can be used either with OAuth or HTTP Basic Authentication.'
   gem.homepage          = 'http://github.com/tstachl/desk'
@@ -26,9 +26,9 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('addressable')
   gem.add_runtime_dependency('hashie')
 
-  gem.add_development_dependency('rspec')
-  gem.add_development_dependency('rake')
-  gem.add_development_dependency('vcr')
-  gem.add_development_dependency('simplecov')
-  gem.add_development_dependency('coveralls')
+  #gem.add_development_dependency('rspec')
+  #gem.add_development_dependency('rake')
+  #gem.add_development_dependency('vcr')
+  #gem.add_development_dependency('simplecov')
+  #gem.add_development_dependency('coveralls')
 end

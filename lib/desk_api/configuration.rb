@@ -45,7 +45,7 @@ module DeskApi::Configuration
       builder.response :dates
       builder.response :raise_error, DeskApi::Error::ClientError
       builder.response :raise_error, DeskApi::Error::ServerError
-      builder.response :json, content_type: /application\/json/
+      builder.response :json, :content_type => /application\/json/
 
       builder.adapter Faraday.default_adapter
     end
@@ -78,17 +78,17 @@ private
 
   def oauth
     {
-      consumer_key: @consumer_key,
-      consumer_secret: @consumer_secret,
-      token: @token,
-      token_secret: @token_secret
+      :consumer_key => @consumer_key,
+      :consumer_secret => @consumer_secret,
+      :token => @token,
+      :token_secret => @token_secret
     }
   end
 
   def basic_auth
     {
-      username: @username,
-      password: @password
+      :username => @username,
+      :password => @password
     }
   end
 

@@ -1,12 +1,12 @@
 module DeskApi::Default
   CONNECTION_OPTIONS = {
-    headers: {
-      accept: 'application/json',
-      user_agent: "desk.com Ruby Gem v#{DeskApi::VERSION}"
+    :headers => {
+      :accept => 'application/json',
+      :user_agent => "desk.com Ruby Gem v#{DeskApi::VERSION}"
     },
-    request: {
-      open_timeout: 5,
-      timeout: 10
+    :request => {
+      :open_timeout => 5,
+      :timeout => 10
     }
   } unless defined? DeskApi::Default::CONNECTION_OPTIONS
 

@@ -26,7 +26,7 @@ class DeskApi::Resource
   end
 
   def search(params = {})
-    params = { q: params } if params.kind_of?(String)
+    params = { :q => params } if params.kind_of?(String)
     url = Addressable::URI.parse(clean_base_url + '/search')
     url.query_values = params
     self.class.new(@_client, self.class.build_self_link(url.to_s))
@@ -42,7 +42,7 @@ class DeskApi::Resource
   def embed(*embedds)
     # make sure we don't try to embed anything that's not defined
     # add it to the query
-    self.tap{ |res| res.query_params = { embed: embedds.join(',') } }
+    self.tap{ |res| res.query_params = { :embed => embedds.join(',') } }
   end
 
   def by_url(url)
@@ -66,14 +66,30 @@ class DeskApi::Resource
     get_self['class']
   end
 
-  [:page, :per_page].each do |method|
-    define_method(method) do |value = nil|
-      unless value
-        self.exec! if self.query_params_include?(method.to_s) == nil
-        return self.query_params_include?(method.to_s).to_i
-      end
-      self.tap{ |res| res.query_params = Hash[method.to_s, value.to_s] }
+  #[:page, :per_page].each do |method|
+  #  define_method(method) do |value = nil|
+  #    unless value
+  #      self.exec! if self.query_params_include?(method.to_s) == nil
+  #      return self.query_params_include?(method.to_s).to_i
+  #    end
+  #    self.tap{ |res| res.query_params = Hash[method.to_s, value.to_s] }
+  #  end
+  #end
+
+  def page(value = nil)
+    unless value
+      self.exec! if self.query_params_include?("page") == nil
+      return self.query_params_include?("page").to_i
     end
+    self.tap{ |res| res.query_params = Hash["page", value.to_s] }
+  end
+
+  def per_page(value = nil)
+    unless value
+      self.exec! if self.query_params_include?("per_page") == nil
+      return self.query_params_include?("per_page").to_i
+    end
+    self.tap{ |res| res.query_params = Hash["per_page", value.to_s] }
   end
 
 protected
