@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('simple_oauth')
   gem.add_runtime_dependency('addressable')
   gem.add_runtime_dependency('hashie')
+  gem.add_runtime_dependency('active_support') if RUBY_VERSION < '1.9'
 
   #gem.add_development_dependency('rspec')
   #gem.add_development_dependency('rake')

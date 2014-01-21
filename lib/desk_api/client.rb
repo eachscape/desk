@@ -1,5 +1,6 @@
 require 'desk_api/resource'
 require 'desk_api/error/parser_error'
+require 'active_support/core_ext/enumerable' if RUBY_VERSION < '1.9'
 
 class DeskApi::Client
   include DeskApi::Configuration
